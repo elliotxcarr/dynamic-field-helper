@@ -9,6 +9,7 @@ export interface StateSlice {
     reportTypes: string[],
     vesselTypes: string[],
     tabNames: string[],
+    searchResults: Field[],
     fields: Field[],
 }
 
@@ -19,6 +20,7 @@ export const initialStateSlice: StateSlice = {
     reportTypes: [ 'all', 'sea', 'port', 'anchor', 'maneuvering'],
     vesselTypes: ['all', 'bulker', 'tanker', 'car', 'container', 'lng', 'cruise', 'tug'],
     tabNames: ['operational', 'position-weather', 'cargo-details', 'power', 'bunker', 'stock'],
+    searchResults: [],
     fields: fields
 }
 
@@ -53,6 +55,7 @@ export const StateStore = signalStore(
         setSelectedReportType: (type: string) => patchState(store, ({selectedReport: type})),
         setSelectedVesselType: (type: string) => patchState(store, ({selectedVessel: type})),
         setSelectedTab: (tab: string) => patchState(store, ({selectedTab: tab})),
-        getSectionFields: (section: string): Field[] => store.filteredFields().filter(f => f.section === section)
+        getSectionFields: (section: string): Field[] => store.filteredFields().filter(f => f.section === section),
+        searchForField: (input: string) => patchState(store, ({searchResults: store.fields().filter(f => f.name.toLowerCase().includes(input.toLowerCase()))}))
     }))
 )

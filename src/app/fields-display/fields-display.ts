@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, computed, inject, Signal } from '@angular/core';
+import { Component, inject} from '@angular/core';
 import { StateStore } from '../store/helper.store';
 
 @Component({
