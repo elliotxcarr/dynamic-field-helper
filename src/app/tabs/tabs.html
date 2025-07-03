@@ -1,8 +1,7 @@
-<div class="tab">
-    <button class="tablinks" (click)="setTab('operational')">Tab 1</button>
-    <button class="tablinks" (click)="setTab('position-weather')">Tab 2</button>
-    <button class="tablinks" (click)="setTab('power')">Tab 3</button>
-    <button class="tablinks" (click)="setTab('bunker')">Tab 3</button>
-    <button class="tablinks" (click)="setTab('stock')">Tab 3</button>
+
+<div class="flex flex-row space-x-8 ">
+    <div *ngFor="let tab of this.tabs">
+            <button class="flex p-3 hover:cursor-pointer" [ngClass]="this.selectedTab === `${tab}` ? 'bg-gray-400' : 'bg-gray-200'" (click)="setTab(`${tab}`)">{{tab}}</button>
+    </div>
 </div>
-<router-outlet></router-outlet>
+<router-outlet ></router-outlet>

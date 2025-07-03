@@ -1,1 +1,20 @@
-<p>position-weather works!</p>
+<div class="bg-gray-100 p-4">
+    <div class="text-xl font-bold">Sea Water</div>
+    
+    <div *ngFor="let field of seaWater()">
+        <p >{{field.name}}</p>
+    </div>
+    <br>
+
+    <div class="text-xl font-bold">Wind</div>
+    <div *ngFor="let field of wind()">
+        <p>{{field.name}}</p>
+    </div>
+    <br>
+
+    <div class="text-xl font-bold">Currents and Sea Water</div>
+    <div class="flex flex-row" *ngFor="let field of currentsSeaWater()" >
+        <p (mouseenter)="enableTooltip()" (mouseleave)="enableTooltip()" class="hover:cursor-pointer">{{field.name}}</p>
+        <div *ngIf="showTooltip" class="flex bg-gray-200 p-0.5 text-md ml-2 text-green-600">{{field.type}}</div>
+    </div>
+</div>

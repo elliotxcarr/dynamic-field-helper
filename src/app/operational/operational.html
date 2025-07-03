@@ -1,1 +1,13 @@
-<p>operational works!</p>
+<div class="bg-gray-100 p-4">
+    <div class="text-xl font-bold">Vessel Details</div>
+    
+    <div *ngFor="let field of vesselDetails()">
+        <p >{{field.name}}</p>
+    </div>
+    <br>
+
+    <div class="text-xl font-bold">Report Time</div>
+    <div *ngFor="let field of reportTime()">
+        <p>{{field.name}}</p>
+    </div>
+</div>
