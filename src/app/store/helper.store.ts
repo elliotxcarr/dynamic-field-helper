@@ -36,15 +36,23 @@ export const StateStore = signalStore(
                 f.tab === tab && 
                 (report === 'all' ? f : f.reportTypes.includes(report)) &&
                 (vessel === 'all' ? f : f.vesselTypes.includes(vessel))
-            )
-        })
+            );
+        });
+
+        const sectionNames = computed(() => 
+            [...new Set(
+                filteredFields().map(f => f.section)
+            )]
+        )
         return {
-            filteredFields
+            filteredFields,
+            sectionNames
         }
     }),
     withMethods((store) => ({
         setSelectedReportType: (type: string) => patchState(store, ({selectedReport: type})),
         setSelectedVesselType: (type: string) => patchState(store, ({selectedVessel: type})),
-        setSelectedTab: (tab: string) => patchState(store, ({selectedTab: tab}))
+        setSelectedTab: (tab: string) => patchState(store, ({selectedTab: tab})),
+        getSectionFields: (section: string): Field[] => store.filteredFields().filter(f => f.section === section)
     }))
 )

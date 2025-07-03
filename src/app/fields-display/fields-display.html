@@ -1,6 +1,9 @@
 <div class="bg-gray-100 p-4">
-    <div *ngFor="let field of store.filteredFields()">
-        <p >{{field.name}}</p>
+    <div *ngFor="let section of store.sectionNames()">
+        <p class="font-bold text-lg">{{section}}</p>
+        <div *ngFor="let field of store.getSectionFields(section)">
+            <p>{{field.name}}</p>
+        </div>
     </div>
     <br>
 </div>
