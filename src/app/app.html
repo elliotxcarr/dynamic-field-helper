@@ -1,7 +1,7 @@
 <div class="m-7">
     <div class="flex flex-row">
-        <app-vessel-types></app-vessel-types>
-        <app-report-types></app-report-types>
+        <app-dropdown [filters]="vessels" [sendFunction]="store.setSelectedVesselType" ></app-dropdown>
+        <app-dropdown [filters]="reports" [sendFunction]="store.setSelectedReportType"></app-dropdown>
     </div>
     <app-tabs ></app-tabs>
 </div>
