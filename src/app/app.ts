@@ -12,8 +12,5 @@ import { StateStore } from './store/helper.store';
 })
 export class App {
   protected title = 'dynamic-field-helper';
-  reports = ['sea', 'port', 'anchor', 'maneuvering', 'all'];
-  vessels = ['bulker', 'tanker', 'car', 'container', 'lng', 'cruise', 'tug', 'all'];
-
   readonly store = inject(StateStore);
 }

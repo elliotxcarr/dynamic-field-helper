@@ -1,7 +1,9 @@
-
 <div class="flex flex-row space-x-8 ">
-    <div *ngFor="let tab of this.tabs">
-            <button class="flex p-3 hover:cursor-pointer" [ngClass]="this.selectedTab === `${tab}` ? 'bg-gray-400' : 'bg-gray-200'" (click)="setTab(`${tab}`)">{{tab}}</button>
+    <div *ngFor="let tab of store.tabNames()">
+            <button 
+                class="flex p-3 hover:cursor-pointer" 
+                [ngClass]="tab === store.selectedTab() ? 'bg-gray-400' : 'bg-gray-200'" 
+                (click)="store.setSelectedTab(tab)">{{tab}}</button>
     </div>
 </div>
-<router-outlet ></router-outlet>
+<app-fields-display></app-fields-display>
