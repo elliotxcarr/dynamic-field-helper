@@ -10,6 +10,6 @@ import { FormsModule } from '@angular/forms';
 })
 export class VesselTypes {
   readonly store = inject(StateStore)
-  vesselTypes = ['bulker', 'tanker', 'car', 'container', 'lng', 'cruise', 'tug'];
+  vesselTypes = ['bulker', 'tanker', 'car', 'container', 'lng', 'cruise', 'tug', 'all'];
 
 }

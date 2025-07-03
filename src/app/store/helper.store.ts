@@ -9,8 +9,8 @@ export interface StateSlice {
 }
 
 export const initialStateSlice: StateSlice = {
-    selectedReport: 'sea',
-    selectedVessel: 'bulker',
+    selectedReport: 'all',
+    selectedVessel: 'all',
     fields: fields
 }
 
@@ -20,10 +20,12 @@ export const StateStore = signalStore(
     withComputed(store => {
         
         const filterReport = (tab:string)=> {
+            const report = store.selectedReport();
+            const vessel = store.selectedVessel();
             return store.fields().filter(f => 
                 f.tab === tab && 
-                f.reportTypes.includes(store.selectedReport()) &&
-                f.vesselTypes.includes(store.selectedVessel())
+                (report === 'all' ? f : f.reportTypes.includes(report)) &&
+                (vessel === 'all' ? f : f.vesselTypes.includes(vessel))
             )
         }
         return {

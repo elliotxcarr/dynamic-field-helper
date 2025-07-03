@@ -10,5 +10,5 @@ import { StateStore } from '../store/helper.store';
 })
 export class ReportTypes {
   readonly store = inject(StateStore)
-  reportTypes = ['sea', 'port', 'anchor', 'maneuvering']
+  reportTypes = ['sea', 'port', 'anchor', 'maneuvering', 'all']
 }
