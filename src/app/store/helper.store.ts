@@ -10,6 +10,7 @@ export interface StateSlice {
     vesselTypes: string[],
     tabNames: string[],
     searchResults: Field[],
+    searchedField: Field,
     fields: Field[],
 }
 
@@ -21,6 +22,7 @@ export const initialStateSlice: StateSlice = {
     vesselTypes: ['all', 'bulker', 'tanker', 'car', 'container', 'lng', 'cruise', 'tug'],
     tabNames: ['operational', 'position-weather', 'cargo-details', 'power', 'bunker', 'stock'],
     searchResults: [],
+    searchedField: {} as Field,
     fields: fields
 }
 
@@ -28,34 +30,47 @@ export const StateStore = signalStore(
     {providedIn: 'root'},
     withState(initialStateSlice),
     withComputed(store => {
-        
-        const filteredFields = computed(()=> {
-            const report = store.selectedReport();
-            const vessel = store.selectedVessel();
-            const tab = store.selectedTab();
-
-            return store.fields().filter(f => 
-                f.tab === tab && 
+        const filteredFields = computed(() => {
+                const report = store.selectedReport();
+                const vessel = store.selectedVessel();
+                return store.fields().filter(f => 
                 (report === 'all' ? f : f.reportTypes.includes(report)) &&
                 (vessel === 'all' ? f : f.vesselTypes.includes(vessel))
-            );
-        });
+                )
+        })
+
+        const filteredByTab = computed(() => {
+            const tab = store.selectedTab();
+            return filteredFields().filter(f => f.tab === tab)
+        })
 
         const sectionNames = computed(() => 
             [...new Set(
-                filteredFields().map(f => f.section)
+                filteredByTab().map(f => f.section)
             )]
         )
         return {
             filteredFields,
-            sectionNames
+            sectionNames,
+            filteredByTab
         }
     }),
-    withMethods((store) => ({
+    withMethods((store) => {
+
+        const searchForField = (input: string) => {
+            if(!input) patchState(store, ({searchedField: {} as Field}))
+            
+            patchState(store, ({searchResults: store.filteredFields().filter(f => 
+                f.name.toLowerCase().includes(input.toLowerCase())
+            )}))
+        }
+
+        return {
         setSelectedReportType: (type: string) => patchState(store, ({selectedReport: type})),
         setSelectedVesselType: (type: string) => patchState(store, ({selectedVessel: type})),
         setSelectedTab: (tab: string) => patchState(store, ({selectedTab: tab})),
         getSectionFields: (section: string): Field[] => store.filteredFields().filter(f => f.section === section),
-        searchForField: (input: string) => patchState(store, ({searchResults: store.fields().filter(f => f.name.toLowerCase().includes(input.toLowerCase()))}))
-    }))
+        searchForField,
+        setSearchedField : (field:Field) => patchState(store, ({searchedField: field}), ({selectedTab: field.tab}))
+    }})
 )

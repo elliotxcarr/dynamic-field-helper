@@ -1,10 +1,10 @@
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 import { Component, inject} from '@angular/core';
 import { StateStore } from '../store/helper.store';
 
 @Component({
   selector: 'app-fields-display',
-  imports: [NgFor],
+  imports: [NgFor, NgClass],
   templateUrl: './fields-display.html',
   styleUrl: './fields-display.css'
 })
