@@ -10,4 +10,5 @@ import { Component, Input} from '@angular/core';
 export class Dropdown {
   @Input() filters!: string[];
   @Input() sendFunction!: (value: string) => void;
+  @Input () label!: string;
 }

@@ -19,7 +19,7 @@ export const initialStateSlice: StateSlice = {
     selectedVessel: 'all',
     selectedTab: 'operational',
     reportTypes: [ 'all', 'sea', 'port', 'anchor', 'maneuvering'],
-    vesselTypes: ['all', 'bulker', 'tanker', 'car', 'container', 'lng', 'cruise', 'tug'],
+    vesselTypes: ['all', 'bulk', 'tanker', 'car', 'container', 'lng', 'cruise', 'tug'],
     tabNames: ['operational', 'position-weather', 'cargo-details', 'power', 'bunker', 'stock'],
     searchResults: [],
     searchedField: {} as Field,
@@ -39,16 +39,10 @@ export const StateStore = signalStore(
                 )
         })
 
-        const filteredByTab = computed(() => {
-            const tab = store.selectedTab();
-            return filteredFields().filter(f => f.tab === tab)
-        })
+        const filteredByTab = computed(() => filteredFields().filter(f => f.tab === store.selectedTab()));
 
-        const sectionNames = computed(() => 
-            [...new Set(
-                filteredByTab().map(f => f.section)
-            )]
-        )
+        const sectionNames = computed(() => [...new Set(filteredByTab().map(f => f.section))]);
+
         return {
             filteredFields,
             sectionNames,
@@ -66,9 +60,9 @@ export const StateStore = signalStore(
         }
 
         return {
-        setSelectedReportType: (type: string) => patchState(store, ({selectedReport: type})),
-        setSelectedVesselType: (type: string) => patchState(store, ({selectedVessel: type})),
-        setSelectedTab: (tab: string) => patchState(store, ({selectedTab: tab})),
+        setSelectedReportType: (selectedReport: string) => patchState(store, ({selectedReport})),
+        setSelectedVesselType: (selectedVessel: string) => patchState(store, ({selectedVessel})),
+        setSelectedTab: (selectedTab: string) => patchState(store, ({selectedTab})),
         getSectionFields: (section: string): Field[] => store.filteredFields().filter(f => f.section === section),
         searchForField,
         setSearchedField : (field:Field) => patchState(store, ({searchedField: field}), ({selectedTab: field.tab}))

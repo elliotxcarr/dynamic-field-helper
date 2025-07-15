@@ -1,6 +1,6 @@
-<div class="bg-gray-100 p-4">
-    <div *ngFor="let section of store.sectionNames()">
-        <p class="font-bold text-lg">{{section}}</p>
+<div class="bg-gray-100 p-4 grid grid-cols-6">
+    <div *ngFor="let section of store.sectionNames()" class="p-2 ">
+        <p class="font-bold underline text-lg">{{section}}</p>
         <div *ngFor="let field of store.getSectionFields(section)">
             <p [ngClass]="store.searchedField() === field ? 'text-green-400 text-xl font-semibold' : ''">{{field.name}}</p>
         </div>

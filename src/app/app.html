@@ -1,12 +1,14 @@
 <div class="m-7">
-    <div class="flex flex-row">
+    <div class="flex flex-row space-y-2">
         <app-dropdown 
-            [filters]="store.vesselTypes()" 
-            [sendFunction]="store.setSelectedVesselType" >
-        </app-dropdown>
-        <app-dropdown 
+            [label]="'Report'"
             [filters]="store.reportTypes()" 
             [sendFunction]="store.setSelectedReportType">
+        </app-dropdown>
+        <app-dropdown 
+            [label]="'Vessel'"
+            [filters]="store.vesselTypes()" 
+            [sendFunction]="store.setSelectedVesselType" >
         </app-dropdown>
         <app-search-bar></app-search-bar>
     </div>

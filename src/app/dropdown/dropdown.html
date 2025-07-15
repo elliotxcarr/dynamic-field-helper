@@ -1,4 +1,5 @@
-<div class="flex flex-row space-x-8 m-2">
+<div class="flex flex-row space-x-1 m-2 items-center">
+    <div>{{label}}:</div>
     <select #select (change)="sendFunction(select.value)" class="p-2 border rounded" >
         <option *ngFor="let type of filters" [value]="type">
             {{ type }}
