@@ -1,6 +1,7 @@
-import {patchState, signalStore, withComputed, withMethods, withState} from '@ngrx/signals'
+import {patchState, signalStore, withComputed, withHooks, withMethods, withState} from '@ngrx/signals'
 import { Field, fields } from '../data/fields'
 import { computed } from '@angular/core'
+import { filterBySea, filterByTemplate } from '../data/templateTest'
 
 export interface StateSlice {
     selectedReport: string,
@@ -66,5 +67,11 @@ export const StateStore = signalStore(
         getSectionFields: (section: string): Field[] => store.filteredFields().filter(f => f.section === section),
         searchForField,
         setSearchedField : (field:Field) => patchState(store, ({searchedField: field}), ({selectedTab: field.tab}))
-    }})
+    }}),
+    withHooks(() => ({
+        onInit: () => {
+            console.log(filterBySea);
+            console.log(filterByTemplate)
+        }
+    }))
 )

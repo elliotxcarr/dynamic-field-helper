@@ -14,4 +14,5 @@ import { SearchBar } from "./search-bar/search-bar";
 export class App {
   protected title = 'dynamic-field-helper';
   readonly store = inject(StateStore);
+  
 }
