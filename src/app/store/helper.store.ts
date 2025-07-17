@@ -78,7 +78,15 @@ export const StateStore = signalStore(
       setSelectedTab: (selectedTab: string) => patchState(store, ({ selectedTab })),
       getSectionFields: (section: string): Field[] => store.filteredFields().filter(f => f.section === section),
       searchForField,
-      setSearchedField: (field: Field) => patchState(store, ({ searchedField: field }), ({ selectedTab: field.tab }))
+      setSearchedField: (field: Field) =>{ 
+        patchState(store, 
+          ({ searchedField: field }), 
+          ({ selectedTab: field.tab }),
+          ({searchResults: []})
+        )
+        const element = document.getElementById(field.name);
+        element?.scrollIntoView();
+        }
     }
   }),
   withHooks(() => ({
