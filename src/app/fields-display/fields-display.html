@@ -3,8 +3,8 @@
         <p class="font-bold underline text-lg">{{section}}</p>
         <div *ngFor="let field of store.getSectionFields(section)" class="flex flex-row">
             <p [ngClass]="store.searchedField() === field ? 'bg-green-600 text-white animate-pulse  text-xl font-semibold' : ''" id="{{field.name}}">{{field.name}}</p>
-            <span *ngIf="field.info" class="px-2 bg-white text-red-600 font-bold rounded-2xl " (click)="store.showFieldInfo(field)">i</span>
-            <div *ngIf="field.showInfo" class="text-sm flex text-right">
+            <button *ngIf="field.info" class="px-2 bg-white text-red-600 font-bold rounded-2xl hover:cursor-pointer" (click)="store.showFieldInfo(field)">i</button>
+            <div *ngIf="field.showInfo" class="fixed w-50 text-sm p-2 ml-20 bg-white">
                 {{field.info}}
             </div>
         </div>

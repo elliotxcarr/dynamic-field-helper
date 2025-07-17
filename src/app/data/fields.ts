@@ -579,7 +579,9 @@ export const allFields: Field[] =[
         tab: 'operational',
         section: 'Voyage Itinerary',
         vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
-        reportTypes: ['sea']
+        reportTypes: ['sea'],
+        info: 'ETA Timezone is removed when Awaiting Orders checkbox is ticked',
+        showInfo:false
     },
     {
         name:'COSP',
