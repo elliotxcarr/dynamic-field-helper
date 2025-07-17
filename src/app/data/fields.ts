@@ -4,16 +4,18 @@ export interface Field{
     tab: string,
     section:string,
     vesselTypes: string[],
-    reportTypes: string[]
+    reportTypes: string[],
+    info?: string;
+    showInfo?: boolean
 }
-export const fields: Field[] =[
+export const allFields: Field[] =[
     //operational
     {
         name:'Report Number',
         type: 'number',
         tab: 'operational',
         section: 'Vessel Details',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes:  ['anchor', 'port', 'sea', 'maneuvering']
     },
     {
@@ -21,7 +23,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Vessel Details',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['anchor', 'port', 'sea', 'maneuvering']
     },
     {
@@ -29,7 +31,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Vessel Details',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     {
@@ -37,7 +39,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Vessel Details',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     {
@@ -45,7 +47,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Vessel Details',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical'],
         reportTypes: ['sea', 'maneuvering']
     },
     {
@@ -53,7 +55,15 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Vessel Details',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical'],
+        reportTypes: ['sea']
+    },
+    {
+        name:'Other Speed Steaming',
+        type: 'text/dropdown',
+        tab: 'operational',
+        section: 'Vessel Details',
+        vesselTypes: ['chemical'],
         reportTypes: ['sea']
     },
     {
@@ -61,7 +71,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Report Time',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['anchor', 'port', 'sea', 'maneuvering']
     },
     {
@@ -69,7 +79,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Report Time',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     {
@@ -77,15 +87,17 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Report Time',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
-        reportTypes: ['anchor', 'port', 'sea', 'maneuvering']
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
+        reportTypes: ['anchor', 'port', 'sea', 'maneuvering'],
+        info: 'Report To changes to EOSP when the EOSP checlbox is is ticked',
+        showInfo: false
     },
     {
         name:'Report Creation',
         type: 'date',
         tab: 'operational',
         section: 'Report Time',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['anchor', 'port', 'sea', 'maneuvering']
     },
     {
@@ -93,7 +105,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Report Time',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['anchor', 'port', 'sea', 'maneuvering']
     },
     {
@@ -101,7 +113,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Report Time',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['anchor', 'port', 'sea', 'maneuvering']
     },
     {
@@ -109,7 +121,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Report Time',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['anchor', 'port', 'sea', 'maneuvering']
     },
     {
@@ -117,7 +129,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Report Time',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'container'],
         reportTypes: ['sea']
     },
     {
@@ -126,15 +138,119 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Report Time',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['anchor', 'sea', 'maneuvering']
+    },
+    {
+        name:'Displacement',
+        type: 'number',
+        tab: 'operational',
+        section: 'Stability Conditions',
+        vesselTypes: ['bulk', 'tanker', 'container', 'chemical'],
+        reportTypes: ['sea', 'maneuvering']
+    },
+    {
+        name:'GM Reserve',
+        type: 'number',
+        tab: 'operational',
+        section: 'Stability Conditions',
+        vesselTypes: ['bulk', 'tanker', 'container', 'chemical',],
+        reportTypes: ['anchor', 'port','maneuvering']
+    },
+    {
+        name:'Dead Weight Reserve',
+        type: 'number',
+        tab: 'operational',
+        section: 'Stability Conditions',
+        vesselTypes: ['bulk', 'tanker', 'container', 'chemical',],
+        reportTypes: [ 'anchor','port', 'maneuvering']
+    },
+    {
+        name:'Constant Weight',
+        type: 'number',
+        tab: 'operational',
+        section: 'Stability Conditions',
+        vesselTypes: ['bulk', 'tanker', 'container', ],
+        reportTypes: ['sea', 'maneuvering']
+    },
+    {
+        name:'Fresh Water / Domestic',
+        type: 'number',
+        tab: 'operational',
+        section: 'Pool Specific Fields',
+        vesselTypes: ['chemical','tanker'],
+        reportTypes: ['sea', 'port']
+    },
+    {
+        name:'Fresh Water / Tank Cleaning',
+        type: 'number',
+        tab: 'operational',
+        section: 'Pool Specific Fields',
+        vesselTypes: ['chemical','tanker'],
+        reportTypes: ['sea', 'port']
+    },
+    {
+        name:'Slops / Residual Tanks',
+        type: 'number',
+        tab: 'operational',
+        section: 'Pool Specific Fields',
+        vesselTypes: ['chemical','tanker'],
+        reportTypes: ['sea', 'port']
+    },
+    {
+        name:'Slops / Slop Tanks',
+        type: 'number',
+        tab: 'operational',
+        section: 'Pool Specific Fields',
+        vesselTypes: ['chemical','tanker'],
+        reportTypes: ['sea', 'port']
+    },
+    {
+        name:'Total Interface / Oil',
+        type: 'number',
+        tab: 'operational',
+        section: 'Pool Specific Fields',
+        vesselTypes: ['chemical','tanker'],
+        reportTypes: ['sea', 'port']
+    },
+    {
+        name:'Total Interface / Water',
+        type: 'number',
+        tab: 'operational',
+        section: 'Pool Specific Fields',
+        vesselTypes: ['chemical','tanker'],
+        reportTypes: ['sea', 'port']
+    },
+    {
+        name:'First Line',
+        type: 'date',
+        tab: 'operational',
+        section: 'Pool Specific Fields',
+        vesselTypes: ['chemical','tanker'],
+        reportTypes: ['sea', 'port']
+    },
+    {
+        name:'Gangway Down',
+        type: 'date',
+        tab: 'operational',
+        section: 'Pool Specific Fields',
+        vesselTypes: ['chemical','tanker'],
+        reportTypes: ['sea', 'port']
+    },
+    {
+        name:'Cargo Docs Onboard',
+        type: 'date',
+        tab: 'operational',
+        section: 'Pool Specific Fields',
+        vesselTypes: ['chemical','tanker'],
+        reportTypes: ['sea', 'port']
     },
     {
         name:'Port Name',
         type: 'text',
         tab: 'operational',
         section: 'Port',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container',  'cruise'],
         reportTypes: ['anchor']
     },
     {
@@ -142,7 +258,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Port and Position',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical',  'cruise'],
         reportTypes: ['port']
     },
     {
@@ -150,7 +266,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Port and Position',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port']
     },
     {
@@ -158,7 +274,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Port and Position',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port']
     },
     {
@@ -166,15 +282,15 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Port and Position',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port']
     },
     {
         name:'Latitude North/South',
-        type: 'text',
+        type: 'text/dropdown',
         tab: 'operational',
         section: 'Port and Position',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port']
     },
     {
@@ -182,7 +298,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Port and Position',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port']
     },
     {
@@ -190,7 +306,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Port and Position',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port']
     },
     {
@@ -198,15 +314,15 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Port and Position',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port']
     },
     {
         name:'Longitude East/West',
-        type: 'text',
+        type: 'text/dropdown',
         tab: 'operational',
         section: 'Port and Position',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port']
     },
     {
@@ -214,7 +330,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Miscellaneous',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port', 'sea', 'anchor', 'maneuvering']
     },
     {
@@ -222,7 +338,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Miscellaneous',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port', 'sea', 'anchor', 'maneuvering']
     },
     {
@@ -230,7 +346,7 @@ export const fields: Field[] =[
         type: 'checkbox',
         tab: 'operational',
         section: 'Miscellaneous',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container',  'cruise'],
         reportTypes: ['maneuvering']
     },
     {
@@ -238,7 +354,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Miscellaneous',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical'],
         reportTypes: ['port']
     },
     {
@@ -246,7 +362,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Miscellaneous',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     {
@@ -254,7 +370,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Miscellaneous',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical'],
         reportTypes: ['sea']
     },
     {
@@ -262,7 +378,7 @@ export const fields: Field[] =[
         type: 'checkbox',
         tab: 'operational',
         section: 'Miscellaneous',
-        vesselTypes: ['tanker'],
+        vesselTypes: ['tanker', 'chemical'],
         reportTypes: ['sea']
     },
     {
@@ -270,7 +386,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Miscellaneous',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container',  'cruise'],
         reportTypes: ['maneuvering']
     },
     {
@@ -278,7 +394,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Miscellaneous',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container',  'cruise'],
         reportTypes: ['maneuvering']
     },
     {
@@ -286,7 +402,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Miscellaneous',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container',  'cruise'],
         reportTypes: ['maneuvering']
     },
     {
@@ -294,7 +410,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'chemical', 'container', ],
         reportTypes: ['port']
     },
     {
@@ -302,7 +418,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'chemical', 'container', ],
         reportTypes: ['port']
     },
     {
@@ -310,15 +426,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
-        reportTypes: ['port']
-    },
-    {
-        name:'All Fast',
-        type: 'date',
-        tab: 'operational',
-        section: 'Port Operations Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'chemical', 'container', ],
         reportTypes: ['port']
     },
     {
@@ -326,7 +434,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['tanker', 'lng'],
+        vesselTypes: ['tanker', 'chemical',],
         reportTypes: ['port']
     },
     {
@@ -334,7 +442,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'chemical', 'container', ],
         reportTypes: ['port']
     },
     {
@@ -342,7 +450,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'chemical', 'container', ],
         reportTypes: ['port']
     },
     {
@@ -350,7 +458,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['tanker', 'lng'],
+        vesselTypes: ['tanker', 'chemical', ],
         reportTypes: ['port']
     },
     {
@@ -358,7 +466,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'chemical', 'container', ],
         reportTypes: ['port']
     },
     {
@@ -406,7 +514,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['bulk', 'container'],
+        vesselTypes: ['bulk', 'chemical', 'container'],
         reportTypes: ['port']
     },
     {
@@ -414,7 +522,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'chemical', 'container', ],
         reportTypes: ['port']
     },
     {
@@ -422,7 +530,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'chemical', 'container', ],
         reportTypes: ['port']
     },
     {
@@ -430,7 +538,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Port Operations Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'chemical', 'container', ],
         reportTypes: ['port']
     },
     {
@@ -438,7 +546,7 @@ export const fields: Field[] =[
         type: 'checkbox',
         tab: 'operational',
         section: 'Voyage Itinerary',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     {
@@ -446,7 +554,7 @@ export const fields: Field[] =[
         type: 'checkbox',
         tab: 'operational',
         section: 'Voyage Itinerary',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     {
@@ -454,7 +562,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Voyage Itinerary',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     {
@@ -462,7 +570,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Voyage Itinerary',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     {
@@ -470,7 +578,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Voyage Itinerary',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     {
@@ -478,7 +586,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Voyage Itinerary',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker','car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     {
@@ -486,7 +594,7 @@ export const fields: Field[] =[
         type: 'boolean',
         tab: 'operational',
         section: 'Voyage Itinerary',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     {
@@ -494,7 +602,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Voyage Itinerary',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical'],
         reportTypes: ['sea']
     },
     {
@@ -502,7 +610,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Voyage Itinerary',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical'],
         reportTypes: ['sea']
     },
     {
@@ -510,7 +618,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Voyage Itinerary',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical'],
         reportTypes: ['sea']
     },
     {
@@ -518,7 +626,7 @@ export const fields: Field[] =[
         type: 'boolean',
         tab: 'operational',
         section: 'Voyage Itinerary',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea']
     },
     // {
@@ -526,7 +634,7 @@ export const fields: Field[] =[
     //     type: 'text',
     //     tab: 'operational',
     //     section: 'Voyage Itinerary',
-    //     vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+    //     vesselTypes: ['bulk', 'tanker', 'car', 'container', ],
     //     reportTypes: ['sea']
     // },
     {
@@ -534,7 +642,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Anchor/Drifting Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', ],
         reportTypes: ['anchor']
     },
     {
@@ -542,7 +650,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Anchor/Drifting Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', ],
         reportTypes: ['anchor']
     },
     {
@@ -550,7 +658,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Anchor/Drifting Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'lng'],
+        vesselTypes: ['bulk', 'tanker', ],
         reportTypes: ['anchor']
     },
     {
@@ -558,7 +666,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Anchor/Drifting Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', ],
         reportTypes: ['anchor']
     },
     {
@@ -566,7 +674,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Anchor/Drifting Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', ],
         reportTypes: ['anchor']
     },
     {
@@ -574,7 +682,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Anchor/Drifting Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', ],
         reportTypes: ['anchor']
     },
     {
@@ -582,7 +690,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Anchor/Drifting Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', ],
         reportTypes: ['anchor']
     },
     {
@@ -590,7 +698,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Anchor/Drifting Time Stamp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', ],
         reportTypes: ['anchor']
     },
     {
@@ -598,7 +706,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Anchor/Drifting Time Stanp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', ],
         reportTypes: ['anchor']
     },
     {
@@ -606,7 +714,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Anchor/Drifting Time Stanp',
-        vesselTypes: ['bulk', 'tanker', 'car', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', ],
         reportTypes: ['anchor']
     },
     {
@@ -614,7 +722,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container',  'cruise'],
         reportTypes: ['maneuvering']
     },
     {
@@ -622,7 +730,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container',  'cruise'],
         reportTypes: ['maneuvering']
     },
     {
@@ -630,7 +738,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['tanker', 'container', 'lng'],
+        vesselTypes: ['tanker', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -638,7 +746,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -646,7 +754,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -654,7 +762,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker','car', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -662,7 +770,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker','car', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -670,7 +778,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker','car', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -678,7 +786,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker','car', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -686,7 +794,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng', ],
+        vesselTypes: ['bulk', 'tanker','car', 'container',  ],
         reportTypes: ['maneuvering']
     },
     {
@@ -694,7 +802,7 @@ export const fields: Field[] =[
         type: 'boolean',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker','car', 'container',  'cruise'],
         reportTypes: ['maneuvering']
     },
     {
@@ -702,7 +810,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker','car', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -710,7 +818,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker','car', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -718,7 +826,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -726,7 +834,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -734,7 +842,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -742,7 +850,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -750,7 +858,7 @@ export const fields: Field[] =[
         type: 'boolean',
         tab: 'operational',
         section: 'Arrival/Departure',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container',  'cruise'],
         reportTypes: ['maneuvering']
     },
     {
@@ -758,7 +866,7 @@ export const fields: Field[] =[
         type: 'text/dropdown',
         tab: 'operational',
         section: 'Type of Report',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container',  'cruise'],
         reportTypes: ['anchor']
     },
     {
@@ -798,7 +906,7 @@ export const fields: Field[] =[
         type: 'text/dropdown',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port']
     },
     {
@@ -806,7 +914,7 @@ export const fields: Field[] =[
         type: 'text/dropdown',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['port']
     },
     {
@@ -814,7 +922,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'container', ],
         reportTypes: ['port', 'maneuvering']
     },
     {
@@ -822,7 +930,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'container', ],
         reportTypes: ['port', 'maneuvering']
     },
     {
@@ -830,7 +938,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea', 'anchor', 'maneuvering']
     },
     {
@@ -838,7 +946,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea', 'anchor', 'maneuvering']
     },
     {
@@ -846,7 +954,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical', 'cruise'],
         reportTypes: ['sea', 'anchor', 'maneuvering']
     },
     {
@@ -854,15 +962,15 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
-        reportTypes: ['sea', 'anchor', 'maneuvering']
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical'],
+        reportTypes: ['sea', 'port', 'anchor', 'maneuvering']
     },
     {
         name:'Fixed Ballast',
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'container', ],
         reportTypes: ['sea', 'anchor', 'maneuvering']
     },
     {
@@ -870,32 +978,32 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
-        reportTypes: ['anchor']
+        vesselTypes: ['bulk', 'tanker', 'container', 'chemical',],
+        reportTypes: ['anchor', 'port']
     },
     {
         name:'Ballast Water Discharged',
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
-        reportTypes: [ 'anchor']
+        vesselTypes: ['bulk', 'tanker', 'container', 'chemical', ],
+        reportTypes: [ 'anchor','port']
     },
     {
         name:'Ballast Water Sample Date',
         type: 'date',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
-        reportTypes: [ 'anchor']
+        vesselTypes: ['bulk', 'tanker', 'container', 'chemical'],
+        reportTypes: [ 'anchor','port']
     },
     {
         name:'Ballast Water Count of Cells',
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
-        reportTypes: [ 'anchor']
+        vesselTypes: ['bulk', 'tanker', 'container', 'chemical'],
+        reportTypes: [ 'anchor','port']
     },
     //'All Fast' Operating Conditions 
     {
@@ -903,7 +1011,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions/Draught',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker','car', 'container',  'cruise'],
         reportTypes: ['port']
     },
     {
@@ -911,7 +1019,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions/Draught',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng', 'cruise'],
+        vesselTypes: ['bulk', 'tanker','car', 'container',  'cruise'],
         reportTypes: ['port']
     },
     {
@@ -919,47 +1027,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Operating Conditions/Draught',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng', 'cruise'],
-        reportTypes: ['port']
-    },
-    {
-        name:'Ballast Water on Board',
-        type: 'number',
-        tab: 'operational',
-        section: 'Operating Conditions/Draught',
-        vesselTypes: ['bulk', 'tanker','car', 'container', 'lng'],
-        reportTypes: ['port']
-    },
-    {
-        name:'Ballast Water Intake',
-        type: 'number',
-        tab: 'operational',
-        section: 'Operating Conditions/Draught',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
-        reportTypes: ['port']
-    },
-    {
-        name:'Ballast Water Discharged',
-        type: 'number',
-        tab: 'operational',
-        section: 'Operating Conditions/Draught',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
-        reportTypes: ['port']
-    },
-    {
-        name:'Ballast Water Sample Date',
-        type: 'date',
-        tab: 'operational',
-        section: 'Operating Conditions/Draught',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
-        reportTypes: ['port']
-    },
-    {
-        name:'Ballast Water Count of Cells',
-        type: 'number',
-        tab: 'operational',
-        section: 'Operating Conditions/Draught',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker','car', 'container',  'cruise'],
         reportTypes: ['port']
     },
     {
@@ -967,7 +1035,7 @@ export const fields: Field[] =[
         type: 'checkbox',
         tab: 'operational',
         section: 'Next Port',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container','chemical', ],
         reportTypes: ['port']
     },
     {
@@ -975,7 +1043,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Next Port',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical',],
         reportTypes: ['port']
     },
     {
@@ -983,7 +1051,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Next Port',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical',],
         reportTypes: ['port']
     },
     {
@@ -991,7 +1059,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Next Port',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical',],
         reportTypes: ['port']
     },
     {
@@ -999,7 +1067,7 @@ export const fields: Field[] =[
         type: 'text/dropdown',
         tab: 'operational',
         section: 'Next Port',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical',],
         reportTypes: ['port']
     },
     {
@@ -1007,7 +1075,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Next Port',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'chemical',],
         reportTypes: ['port']
     },
     {
@@ -1015,7 +1083,7 @@ export const fields: Field[] =[
         type: 'date',
         tab: 'operational',
         section: 'Cargo Details',
-        vesselTypes: ['tanker', 'car', 'lng'],
+        vesselTypes: ['tanker', 'car', ],
         reportTypes: ['sea', 'maneuvering']
     },
     {
@@ -1023,7 +1091,7 @@ export const fields: Field[] =[
         type: 'text/dropdown',
         tab: 'operational',
         section: 'Cargo Details',
-        vesselTypes: ['tanker', 'car', 'lng'],
+        vesselTypes: ['tanker', 'car', ],
         reportTypes: ['sea', 'maneuvering']
     },
     {
@@ -1031,7 +1099,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Cargo Details',
-        vesselTypes: ['tanker', 'car', 'lng'],
+        vesselTypes: ['tanker', 'car', ],
         reportTypes: ['sea', 'maneuvering']
     },
     {
@@ -1039,15 +1107,15 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Cargo Details',
-        vesselTypes: ['bulk', 'tanker', 'container', 'car', 'lng'],
-        reportTypes: ['sea','anchor', 'maneuvering']
+        vesselTypes: ['bulk', 'tanker', 'container', 'car', 'chemical'],
+        reportTypes: ['sea','anchor', 'maneuvering',]
     },
     {
         name:'Inspection Date',
         type: 'date',
         tab: 'operational',
         section: 'Cargo Details',
-        vesselTypes: ['bulk', 'tanker', 'lng'],
+        vesselTypes: ['bulk', 'tanker', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -1055,7 +1123,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Cargo Details',
-        vesselTypes: ['bulk', 'tanker', 'lng'],
+        vesselTypes: ['bulk', 'tanker', ],
         reportTypes: ['maneuvering']
     },
     {
@@ -1079,7 +1147,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'operational',
         section: 'Cargo Details',
-        vesselTypes: ['tanker', 'container', 'lng'],
+        vesselTypes: ['tanker', 'container', ],
         reportTypes: ['sea']
     },
     {
@@ -1087,7 +1155,7 @@ export const fields: Field[] =[
         type: 'text',
         tab: 'operational',
         section: 'Cargo Details',
-        vesselTypes: [ 'tanker', 'lng'],
+        vesselTypes: [ 'tanker', ],
         reportTypes: ['sea']
     },
     {
@@ -1105,38 +1173,6 @@ export const fields: Field[] =[
         section: 'Cargo Details',
         vesselTypes: [],
         reportTypes: ['sea']
-    },
-    {
-        name:'Displacement',
-        type: 'number',
-        tab: 'operational',
-        section: 'Stability Conditions',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
-        reportTypes: ['sea', 'maneuvering']
-    },
-    {
-        name:'GM Reserve',
-        type: 'number',
-        tab: 'operational',
-        section: 'Stability Conditions',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
-        reportTypes: ['anchor', 'maneuvering']
-    },
-    {
-        name:'Dead Weight Reserve',
-        type: 'number',
-        tab: 'operational',
-        section: 'Stability Conditions',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
-        reportTypes: [ 'anchor', 'maneuvering']
-    },
-    {
-        name:'Constant Weight',
-        type: 'number',
-        tab: 'operational',
-        section: 'Stability Conditions',
-        vesselTypes: ['bulk', 'tanker', 'container', 'lng'],
-        reportTypes: ['sea', 'maneuvering']
     },
     {
         name:'No. of Passengers',
@@ -1183,7 +1219,7 @@ export const fields: Field[] =[
         type: '',
         tab: 'operational',
         section: 'Tank',
-        vesselTypes: ['lng'],
+        vesselTypes: [],
         reportTypes: ['sea', 'port', 'anchor', 'maneuvering']
     },
     {
@@ -1191,7 +1227,7 @@ export const fields: Field[] =[
         type: '',
         tab: 'operational',
         section: 'Tank',
-        vesselTypes: ['lng'],
+        vesselTypes: [],
         reportTypes: ['sea', 'port', 'anchor', 'maneuvering']
     },
     {
@@ -1199,7 +1235,7 @@ export const fields: Field[] =[
         type: '',
         tab: 'operational',
         section: 'Tank',
-        vesselTypes: ['lng'],
+        vesselTypes: [],
         reportTypes: ['sea', 'port', 'anchor', 'maneuvering']
     },
     //position and weather
@@ -1208,7 +1244,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'position-weather',
         section: 'Sea Water',
-        vesselTypes: ['bulk', 'tanker', 'car', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', ],
         reportTypes: ['anchor']
     },
     {
@@ -1216,7 +1252,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'position-weather',
         section: 'Wind',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', ],
         reportTypes: ['sea']
     },
     {
@@ -1224,7 +1260,7 @@ export const fields: Field[] =[
         type: 'number',
         tab: 'position-weather',
         section: 'Currents and Sea Water',
-        vesselTypes: ['bulk', 'tanker', 'car', 'container', 'lng'],
+        vesselTypes: ['bulk', 'tanker', 'car', 'container', ],
         reportTypes: ['sea']
     },
 ]

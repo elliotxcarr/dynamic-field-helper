@@ -1,9 +1,14 @@
 <div class="bg-gray-100 p-4 columns-4 2xl:columns-6">
     <div *ngFor="let section of store.sectionNames()" class=" p-2 break-inside-avoid">
         <p class="font-bold underline text-lg">{{section}}</p>
-        <div *ngFor="let field of store.getSectionFields(section)">
+        <div *ngFor="let field of store.getSectionFields(section)" class="flex flex-row">
             <p [ngClass]="store.searchedField() === field ? 'bg-green-600 text-white animate-pulse  text-xl font-semibold' : ''" id="{{field.name}}">{{field.name}}</p>
+            <span *ngIf="field.info" class="px-2 bg-white text-red-600 font-bold rounded-2xl " (click)="store.showFieldInfo(field)">i</span>
+            <div *ngIf="field.showInfo" class="text-sm flex text-right">
+                {{field.info}}
+            </div>
         </div>
+        
     </div>
     <br>
 </div>

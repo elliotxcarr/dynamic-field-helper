@@ -1,5 +1,5 @@
 import { patchState, signalStore, withComputed, withHooks, withMethods, withState } from '@ngrx/signals'
-import { Field, fields } from '../data/fields'
+import { Field, allFields} from '../data/fields'
 import { computed } from '@angular/core'
 import { filterBySea, filterByTemplate } from '../data/templateTest'
 
@@ -19,10 +19,10 @@ export const initialStateSlice: StateSlice = {
   selectedVessel: 'all',
   selectedTab: 'operational',
   reportTypes: ['all', 'sea', 'port', 'anchor', 'maneuvering'],
-  vesselTypes: ['all', 'bulk', 'tanker', 'car', 'container', 'lng', 'cruise', 'tug'],
+  vesselTypes: ['all', 'bulk', 'tanker', 'car', 'container', 'chemical', 'cruise', 'tug'],
   searchResults: [],
   searchedField: {} as Field,
-  fields: fields
+  fields: allFields,
 }
 
 export const StateStore = signalStore(
@@ -78,6 +78,7 @@ export const StateStore = signalStore(
       setSelectedTab: (selectedTab: string) => patchState(store, ({ selectedTab })),
       getSectionFields: (section: string): Field[] => store.filteredFields().filter(f => f.section === section),
       searchForField,
+      
       setSearchedField: (field: Field) =>{ 
         patchState(store, 
           ({ searchedField: field }), 
@@ -86,7 +87,11 @@ export const StateStore = signalStore(
         )
         const element = document.getElementById(field.name);
         element?.scrollIntoView();
-        }
+        },
+        showFieldInfo: ((field:Field) => patchState(store, (state) => ({
+          fields: state.fields.map(f =>  f === field ? {...f, showInfo: !f.showInfo} : f)
+        })))
+        
     }
   }),
   withHooks(() => ({
